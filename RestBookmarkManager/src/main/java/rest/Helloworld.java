@@ -40,6 +40,6 @@ public class Helloworld {
     public String getHtml() {
     	MBookmark m1 = new MBookmark("test","/test","bookmark de test",30);
     	this.serviceBookmark.save(m1);
-    	return this.serviceBookmark.getAll().toString();
+    	return this.serviceBookmark.getAll().get(0).getNom();
     }
 }

@@ -10,7 +10,7 @@ public class PersistantObjectImpl implements IPersitantObject {
 	
 	 @Id
 	 @GeneratedValue
-	 @Column(name = "id", unique = true, nullable = false)
+	 @Column(name = "id", nullable = false)
 	 private Integer id;
 
 	public Integer getId() {
