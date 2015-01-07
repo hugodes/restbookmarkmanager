@@ -95,7 +95,7 @@ public class Helloworld {
     @POST
     @Path("bookmark/")
     @Produces("text/html")
-    public String getHtmlPostBookmark(@FormParam("name") String name,
+    public String postHtmlPostBookmark(@FormParam("name") String name,
     		@FormParam("url") String url,
     		@FormParam("description") String description,
     		@FormParam("vues") int vues){
