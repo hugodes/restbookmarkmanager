@@ -64,8 +64,9 @@ public class Helloworld {
     @GET
     @Path("bookmark/{id}/tags")
     @Produces("text/html")
-    public String getHtmlBookmarkTags(@PathParam("id") int id) {
-    	return this.serviceBookmark.getBookmarkById(id).getTags().toString();
+    public String getHtmlTagsbyBookmarkId(@PathParam("id") int id) {
+    	MBookmark bookmark = this.serviceBookmark.getBookmarkById(id);
+    	return bookmark.getTags().toString();
 
     }
     
@@ -73,7 +74,7 @@ public class Helloworld {
     @Path("bookmark/all")
     @Produces("text/html")
     public String getHtmlBookmarks() {
-    	return this.serviceBookmark.getAllTags().toString();
+    	return this.serviceBookmark.getAllBookmarks().toString();
     }
     
     @GET
@@ -104,22 +105,20 @@ public class Helloworld {
     	return "";
     }
     
+    
+    /*
+    * Add the new tag for the specified bookmark id
+    */
     @GET
-    @Path("bookmark/tag/{bookmark_id}/{tag_name}")
-    @Produces("text/html")
-    public String getHtmlBookmarkTag(@FormParam("bookmark_id") int bookmark_id,
-    		@FormParam("tag_name") String tag_name) {
-    	List<MTag> list = serviceBookmark.getAllTags();
-    	//a faire verifier que la liste ne contient pas déjà le tag
-    	MBookmark bookmark = serviceBookmark.getBookmarkById(bookmark_id);
-    	MTag tag = new MTag(tag_name);
-    	this.serviceBookmark.saveTag(tag);
-    	tag.addBookmark(bookmark);
-    	bookmark.addTag(tag);
-    	
-    	return "";
+    @Path("/bookmark/{bId}/tag/{tagName}")
+    public String addTagToBID(@PathParam("bId") int id,@PathParam("tagName")String tagName){
+    this.serviceBookmark.addTagToBookmark(id, tagName);
+    return "";
 
     }
+    
+    
+    
     
 	/* * remove the specified bookmark in the db */
     @DELETE

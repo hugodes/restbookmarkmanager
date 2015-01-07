@@ -112,4 +112,20 @@ public class ServiceHelloworld implements IServiceHelloWorld {
 		emf.close();
 	}
 	
+	/*
+	* Add tag for the specified bookmark id
+	*/
+
+	public void addTagToBookmark(int id,String tagName){
+	EntityManagerFactory emf = Persistence.createEntityManagerFactory("tp");
+	EntityManager em = emf.createEntityManager();
+	MBookmark bookmark = em.find(MBookmark.class, id);
+	em.getTransaction().begin();
+	bookmark.addTag(new MTag(tagName));
+	em.getTransaction().commit();
+	em.close();
+	emf.close();
+
+	}
+	
 }

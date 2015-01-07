@@ -5,6 +5,7 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
@@ -24,7 +25,7 @@ public class MBookmark extends PersistantObjectImpl {
 	private String description;
 	@Column(nullable = false)
 	private int vues;
-	@ManyToMany(cascade = {CascadeType.ALL})
+	@ManyToMany(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
 	private Set<MTag> tags;
 
 	public Set<MTag> getTags() {
