@@ -52,4 +52,11 @@ public class Helloworld {
 
     }
     
+    @GET
+    @Path("bookmark/all")
+    @Produces("text/html")
+    public String getHtmlBookmarks() {
+    	return this.serviceBookmark.getAll().toString();
+    }
+    
 }
