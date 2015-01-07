@@ -2,6 +2,7 @@ package rest;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
@@ -40,6 +41,15 @@ public class Helloworld {
     public String getHtml() {
     	MBookmark m1 = new MBookmark("test","/test","bookmark de test",30);
     	this.serviceBookmark.save(m1);
-    	return this.serviceBookmark.getAll().get(0).getNom();
+    	return this.serviceBookmark.getAll().get(0).toString();
     }
+    
+    @GET
+    @Path("bookmark/{id}")
+    @Produces("text/html")
+    public String getHtmlBookmark(@PathParam("id") int id) {
+    	return this.serviceBookmark.getById(id).toString();
+
+    }
+    
 }

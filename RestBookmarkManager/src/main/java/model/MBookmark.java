@@ -63,4 +63,8 @@ public class MBookmark extends PersistantObjectImpl {
 	public void setVues(int vues) {
 		this.vues = vues;
 	}
+	
+	public String toString(){
+		return "nom: " + this.nom;
+	}
 }

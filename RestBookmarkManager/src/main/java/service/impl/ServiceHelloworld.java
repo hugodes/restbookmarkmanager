@@ -38,5 +38,17 @@ public class ServiceHelloworld implements IServiceHelloWorld {
 		emf.close();
 		return list;
 	}
-
+	
+	public MBookmark getById(int id){
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("tp");
+		EntityManager em = emf.createEntityManager();
+		
+		MBookmark bookmark = (MBookmark) em.createQuery("select c from MBookmark c where id = :id")
+				.setParameter("id", id)
+				.getSingleResult();
+		em.close();
+		emf.close();
+		return bookmark;
+	}
+	
 }
