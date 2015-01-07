@@ -27,6 +27,14 @@ public class MBookmark extends PersistantObjectImpl {
 	@ManyToMany(cascade = {CascadeType.ALL})
 	private Set<MTag> tags;
 
+	public Set<MTag> getTags() {
+		return tags;
+	}
+
+	public void setTags(Set<MTag> tags) {
+		this.tags = tags;
+	}
+
 	public MBookmark() {
 		this(null, null, null, -1);
 	}
@@ -59,6 +67,10 @@ public class MBookmark extends PersistantObjectImpl {
 	}
 	public int getVues() {
 		return vues;
+	}
+	
+	public void addTag(MTag tag){
+		this.tags.add(tag);
 	}
 	public void setVues(int vues) {
 		this.vues = vues;

@@ -42,6 +42,10 @@ public class MTag extends PersistantObjectImpl {
 	public Set<MBookmark> getBookmarks() {
 		return bookmarks;
 	}
+	
+	public void addBookmark(MBookmark bookmark) {
+		this.bookmarks.add(bookmark);
+	}
 
 	public void setBookmarks(Set<MBookmark> bookmarks) {
 		this.bookmarks = bookmarks;
